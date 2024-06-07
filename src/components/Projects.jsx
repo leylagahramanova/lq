@@ -98,12 +98,46 @@ const projectsData = [
       },
       {
         id: 11,
-        title: "CIREX 120",
-        description: "",
-        image: "/image/Capture.PNG",
-        tag: ["All", "Figma"],
-        previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_figma-frontenddeveloper-webdeveloper-activity-7091827307278942209-GJz2?utm_source=share&utm_medium=member_desktop",
+        title: "JavaJolt Roasters",
+        description: "Freshly roasted beans make the best cup of coffee.",
+        image: "/image/Coffee.PNG",
+        tag: ["All", "Next"],
+        gitUrl: "https://github.com/leylagahramanova/coffee-coffee",
+        previewUrl: "https://coffee-coffee.vercel.app/",
       },
+      {
+        id: 12,
+        title: "Scoot",
+        description: "Pick your scooter",
+        image: "/image/Scooter.PNG",
+        tag: ["All", "Next"],
+        gitUrl: "https://github.com/leylagahramanova/scooter-scoot-scoot",
+        previewUrl: "https://scooter-scoot-scoot.vercel.app/",
+      },  {
+        id: 13,
+        title: "Interno",
+        description: "Let Your Home Be Unique",
+        image: "/image/Interno.PNG",
+        tag: ["All", "Next"],
+        gitUrl: "https://github.com/leylagahramanova/style-style-style",
+        previewUrl: "https://style-style-style.vercel.app/",
+      },  {
+        id: 14,
+        title: "BookStore",
+        description: "Buy books online. Support local bookstores.",
+        image: "/image/BookTable.PNG",
+        tag: ["All", "Java"],
+        gitUrl: "https://github.com/leylagahramanova/BookShop",
+        previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7202314644311449600/",
+      },{
+        id: 15,
+        title: "Calculator",
+        description: "Calculator on Java",
+        image: "/image/jcalc.PNG",
+        tag: ["All", "Java"],
+        gitUrl: "https://github.com/leylagahramanova/Java/edit/master/src/com/codewithmosh/Calculator.java",
+        previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7204768450051801090/",
+      }
   ];
   
 export default function Projects() {
@@ -111,7 +145,8 @@ export default function Projects() {
     const handleTagChange = (newTag) => {
       setTag(newTag);
     };
-  
+    const sortedProjects = projectsData.sort((a, b) => b.id - a.id);
+
     const filteredProjects = projectsData.filter((project) =>
       project.tag.includes(tag)
     );
@@ -119,73 +154,74 @@ export default function Projects() {
  
   const shouldHideScrollbar = filteredProjects.length < 3;
     return (
-        <div className="sector" id="projects"   >
-            <section className="container" >
-                <div >
-                    <h2  style={{ textAlign: "center" }}>Projects</h2>
-                    <br></br><h4  style={{ textAlign: "center", color:'	 #e6e6e6' }}><small>Click on Card to see the info.</small></h4>
-                
-                    <br></br>
-                    <div className={`tag ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`}>
-        <ProjectTag className='all'
-          onClick={handleTagChange}
-          name="All"
-          isSelected={tag === "All"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="HTML/CSS"
-          isSelected={tag === "HTML/CSS"}
-        />
-        <ProjectTag
-          onClick={handleTagChange}
-          name="Next"
-          isSelected={tag === "Next"}
-        />
-          <ProjectTag
-          onClick={handleTagChange}
-          name="React"
-          isSelected={tag === "React"}
-        />
-           <ProjectTag
-          onClick={handleTagChange}
-          name="Figma"
-          isSelected={tag === "Figma"}
-        />
- 
-      </div>
-      <br></br>
-                    <div className={`App scrollbar force-overflow ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`} id='style-13' >
-                        {filteredProjects.map((project) => (
-                            <div className="card" key={project.id}>
-                      
-                                <img src={project.image} alt={project.title} />
-                                <div className="overlay">
-                                    <div variant="h5"  style={{ textAlign: 'center', fontSize: '1.6rem' }}>
-                                        {project.title}
-                                    </div>
-                                    <div className="description" variant="p" color="WhiteText" sx={{ maxHeight: '5rem', lineHeight: '1.5rem', flex: 1, fontSize: '1.5rem' }}>
-                                    &nbsp;{project.description}
-                                    </div>
-                                    <div className="buttons">
-                                            <><a color="inherit" href={project.previewUrl} >
-                                            <AiFillEye />
-                                            </a>
-                                                <a color="inherit"  href={project.gitUrl}>
-                                                <BsCodeSlash />
-                                                </a></>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                        
-                    </div>
-
-
-                </div>
-       
-            </section>
-        </div>
+      <div className="sector" id="projects">
+      <section className="container">
+          <div>
+              <h2 style={{ textAlign: "center" }}>Projects</h2>
+              <br />
+              <h4 style={{ textAlign: "center", color: '#e6e6e6' }}>
+                  <small>Click on Card to see the info.</small>
+              </h4>
+              <br />
+              <div className={`tag ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`}>
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="All"
+                      isSelected={tag === "All"}
+                  />
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="HTML/CSS"
+                      isSelected={tag === "HTML/CSS"}
+                  />
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="Next"
+                      isSelected={tag === "Next"}
+                  />
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="React"
+                      isSelected={tag === "React"}
+                  />
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="Java"
+                      isSelected={tag === "Java"}
+                  />
+                  <ProjectTag
+                      onClick={handleTagChange}
+                      name="Figma"
+                      isSelected={tag === "Figma"}
+                  />
+              </div>
+              <br />
+              <div className={`App scrollbar force-overflow ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`} id='style-13'>
+                  {filteredProjects.map((project) => (
+                      <div className="card" key={project.id}>
+                          <img src={project.image} alt={project.title} />
+                          <div className="overlay">
+                              <div style={{ textAlign: 'center', fontSize: '1.6rem' }}>
+                                  {project.title}
+                              </div>
+                              <div className="description" style={{ maxHeight: '5rem', lineHeight: '1.5rem', flex: 1, fontSize: '1.5rem' }}>
+                                  &nbsp;{project.description}
+                              </div>
+                              <div className="buttons">
+                                  <a href={project.previewUrl}>
+                                      <AiFillEye />
+                                  </a>
+                                  <a href={project.gitUrl}>
+                                      <BsCodeSlash />
+                                  </a>
+                              </div>
+                          </div>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </section>
+  </div>
 
     );
 }
