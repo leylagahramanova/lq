@@ -197,7 +197,7 @@ export default function Home() {
     </h3>
 
     {/* Buttons */}
-    <div className="flex justify-center md:justify-between items-center gap-4">
+    <div className="flex flex-col md:flex-row items-center gap-4">
       <SkillsButton />
       <a
         href="Leyla Qəhrəmanova.pdf"
