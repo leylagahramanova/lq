@@ -205,7 +205,7 @@ export default function Home() {
         className="inline-block w-30 px-8 py-4 rounded-full m-2 text-gray-100 font-extrabold text-sm uppercase text-center no-underline shadow-inner bg-blue-500 hover:opacity-80 focus:opacity-80 active:scale-90 transition duration-300"
       >
         Download CV
-      </a>
+      </a> 
     </div>
   </div>
 </section>
