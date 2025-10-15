@@ -1,227 +1,158 @@
 // /pages/projects/add.js
 'use client'
-import React, {  useState } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { BsCodeSlash } from "react-icons/bs";
 import { AiFillEye } from "react-icons/ai";
 import Image from "next/image";
 import ProjectTag from './ProjectTag';
-const projectsData = [
-    {
-      id: 1,
-      title: "News Site",
-      description: "User can choose category of news",
-      image: "/image/news.PNG",
-      tag: ["All", "React"],
-      gitUrl: "https://github.com/leylagahramanova/News",
-      previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_frontenddevelopers-intern-development-activity-7102018446904766464-RAo-?utm_source=share&utm_medium=member_desktop",
-    },
-    {
-        id: 2,
-        title: "Burger Site",
-        description: "User can choose burger",
-        image: "/image/burger.PNG",
-        tag: ["All", "Next"],
-        gitUrl: "https://github.com/leylagahramanova/burgers",
-        previewUrl: "https://burgers-yammy.vercel.app/",
-      },
-    {
-      id: 3,
-      title: "Avia Flights",
-      description: "Site for the maintenance of flight simulators",
-      image: "/image/Login-COLLAGE.jpg",
-      tag: ["All", "React"],
-      gitUrl: "https://github.com/leylagahramanova/aviaflights",
-      previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_the-web-application-created-for-the-maintenance-activity-7104358830758592512-hOsB?utm_source=share&utm_medium=member_desktop",
-    },
-    {
-      id: 4,
-      title: "Movie Site",
-      description: "User can wath trailers. Made on java",
-      image: "/image/movie.PNG",
-      tag: ["All", "React"],
-      gitUrl: "https://github.com/leylagahramanova/movie-gold-v1",
-      previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_java-react-opentowork-activity-7117184789509517314-Cr7w?utm_source=share&utm_medium=member_desktop",
-    },
-    {
-        id: 5,
-        title: "Happy New Year",
-        description: "Greeting card",
-        image:  "/image/Card.PNG",
-        tag: ["All", "React"],
-        gitUrl: "https://github.com/leylagahramanova/holiday",
-        previewUrl: "https://leylagahramanova.github.io/holiday/",
-      },
-      {
-        id: 6,
-        title: "Quiz Site",
-        description: "Questions about React",
-        image: "/image/quiz.jpg",
-        tag: ["All", "React"],
-        gitUrl: "https://github.com/leylagahramanova/front",
-        previewUrl: "https://leylagahramanova.github.io/front/",
-      },
-    {
-      id: 7,
-      title: "Cassiopeia",
-      description: "Information about satellites",
-      image: "/image/space.jpeg",
-      tag: ["All", "HTML/CSS"],
-      gitUrl: "https://github.com/leylagahramanova/space_site",
-      previewUrl: "https://leylagahramanova.github.io/space_site/",
-    },
-    {
-      id: 8,
-      title: "Flora site",
-      description: "'About' page and 'Products' page",
-      image: "/image/web.jpg",
-      tag: ["All", "HTML/CSS"],
-      gitUrl: "https://github.com/leylagahramanova/leylagardendshop",
-      previewUrl: "https://leylagahramanova.github.io/leylagardendshop/",
-    },
-    {
-      id: 9,
-      title: "Tea Cafe",
-      description: "Site about tea",
-      image: "/image/tea_cafe.jpeg",
-      tag: ["All", "HTML/CSS"],
-      gitUrl: "https://github.com/leylagahramanova/leylateahouse-main/",
-      previewUrl: " https://leylagahramanova.github.io/leylateahouse-main/",
-    },
-    {
-        id: 10,
-        title: "Enjoy LIFE with a cake",
-        description: "",
-        image: "/image/Cakes.PNG",
-        tag: ["All", "Figma"],
-        gitUrl: "/",
-        previewUrl: "/https://www.linkedin.com/posts/leyla-gahramanova-124918262_figma-frontenddeveloper-webdeveloper-activity-7091827307278942209-GJz2?utm_source=share&utm_medium=member_desktop",
-      },
-      {
-        id: 11,
-        title: "JavaJolt Roasters",
-        description: "Freshly roasted beans make the best cup of coffee.",
-        image: "/image/Coffee.PNG",
-        tag: ["All", "Next"],
-        gitUrl: "https://github.com/leylagahramanova/coffee-coffee",
-        previewUrl: "https://coffee-coffee.vercel.app/",
-      },
-      {
-        id: 12,
-        title: "Scoot",
-        description: "Pick your scooter",
-        image: "/image/Scooter.PNG",
-        tag: ["All", "Next"],
-        gitUrl: "https://github.com/leylagahramanova/scooter-scoot-scoot",
-        previewUrl: "https://scooter-scoot-scoot.vercel.app/",
-      },  {
-        id: 13,
-        title: "Interno",
-        description: "Let Your Home Be Unique",
-        image: "/image/Interno.PNG",
-        tag: ["All", "Next"],
-        gitUrl: "https://github.com/leylagahramanova/style-style-style",
-        previewUrl: "https://style-style-style.vercel.app/",
-      },  {
-        id: 14,
-        title: "BookStore",
-        description: "Buy books online. Support local bookstores.",
-        image: "/image/BookTable.PNG",
-        tag: ["All", "Java"],
-        gitUrl: "https://github.com/leylagahramanova/BookShop",
-        previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7202314644311449600/",
-      },{
-        id: 15,
-        title: "Calculator",
-        description: "Calculator on Java",
-        image: "/image/jcalc.PNG",
-        tag: ["All", "Java"],
-        gitUrl: "https://github.com/leylagahramanova/Java/edit/master/src/com/codewithmosh/Calculator.java",
-        previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7204768450051801090/",
-      }
-  ];
-  
+
+const projectsData = [];
+
 export default function Projects() {
-    const [tag, setTag] = useState("All");
-    const handleTagChange = (newTag) => {
-      setTag(newTag);
+  const [tag, setTag] = useState("All");
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const scrollRef = useRef(null);
+
+  const handleTagChange = (newTag) => {
+    setTag(newTag);
+  };
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch('/api/projects');
+        const data = await res.json();
+        setProjects(Array.isArray(data) ? data : []);
+      } catch (e) {
+        setError('Failed to load projects');
+      } finally {
+        setLoading(false);
+      }
     };
-    const sortedProjects = projectsData.sort((a, b) => b.id - a.id);
+    fetchProjects();
+  }, []);
 
-    const filteredProjects = projectsData.filter((project) =>
-      project.tag.includes(tag)
-    );
-  
- 
-  const shouldHideScrollbar = filteredProjects.length < 3;
-    return (
-      <div className="sector" id="projects">
-      <section className="container">
-          <div>
-              <h2 style={{ textAlign: "center" }}>Projects</h2>
-              <br />
-              <h4 style={{ textAlign: "center", color: '#e6e6e6' }}>
-                  <small>Click on Card to see the info.</small>
-              </h4>
-              <br />
-              <div className={`tag ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`}>
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="All"
-                      isSelected={tag === "All"}
-                  />
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="HTML/CSS"
-                      isSelected={tag === "HTML/CSS"}
-                  />
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="Next"
-                      isSelected={tag === "Next"}
-                  />
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="React"
-                      isSelected={tag === "React"}
-                  />
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="Java"
-                      isSelected={tag === "Java"}
-                  />
-                  <ProjectTag
-                      onClick={handleTagChange}
-                      name="Figma"
-                      isSelected={tag === "Figma"}
-                  />
-              </div>
-              <br />
-              <div className={`App scrollbar force-overflow ${shouldHideScrollbar ? 'hide-scrollbar' : ''}`} id='style-13'>
-                  {filteredProjects.map((project) => (
-                      <div className="card" key={project.id}>
-                          <img src={project.image} alt={project.title} />
-                          <div className="overlay">
-                              <div style={{ textAlign: 'center', fontSize: '1.6rem' }}>
-                                  {project.title}
-                              </div>
-                              <div className="description" style={{ maxHeight: '5rem', lineHeight: '1.5rem', flex: 1, fontSize: '1.5rem' }}>
-                                  &nbsp;{project.description}
-                              </div>
-                              <div className="buttons">
-                                  <a href={project.previewUrl}>
-                                      <AiFillEye />
-                                  </a>
-                                  <a href={project.gitUrl}>
-                                      <BsCodeSlash />
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
-                  ))}
-              </div>
+  const normalizeTag = (t) => {
+    if (!t) return t;
+    const m = t.trim().toLowerCase();
+    if (m === 'next' || m === 'nextjs' || m === 'next.js') return 'Next.js';
+    if (m === 'tailwind' || m === 'tailwindcss' || m === 'tailwind css') return 'Tailwind CSS';
+    if (m === 'node' || m === 'nodejs' || m === 'node.js') return 'Node.js';
+    if (m === 'mysql') return 'MySQL';
+    if (m === 'mongodb') return 'MongoDB';
+    if (m === 'react') return 'React';
+    if (m === 'figma') return 'Figma';
+    if (m === 'java') return 'Java';
+    if (m === 'html/css' || m === 'html, css' || m === 'html css') return 'HTML/CSS';
+    return t.trim();
+  };
+
+  const normalizedProjects = useMemo(() => {
+    return projects.map((p) => ({
+      ...p,
+      tag: Array.from(new Set((p.tag || []).map(normalizeTag))),
+    }));
+  }, [projects]);
+
+  const uniqueTags = useMemo(() => {
+    const tags = new Set();
+    normalizedProjects.forEach((p) => (p.tag || []).forEach((t) => tags.add(t)));
+    return Array.from(tags).sort((a, b) => a.localeCompare(b));
+  }, [normalizedProjects]);
+
+  const filteredProjects = tag === "All"
+    ? normalizedProjects
+    : normalizedProjects.filter((project) => project.tag && project.tag.includes(tag));
+
+  return (
+    <div className="flex flex-col  min-h-screen " id="projects"  >
+      <section className="flex justify-center items-center w-full  ">
+        <div className="w-full ">
+          <h2 className="text-center text-3xl mb-4">Projects</h2>
+
+
+          {/* Tags */}
+          <div className="flex  mb-8">
+            <select
+              value={tag}
+              onChange={(e) => handleTagChange(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+            >
+              <option value="All">All</option>
+              {uniqueTags.map((tagName) => (
+                <option key={tagName} value={tagName}>
+                  {tagName}
+                </option>
+              ))}
+            </select>
           </div>
-      </section>
-  </div>
+          {/* Projects Horizontal Scroll */}
+          <div
+            ref={scrollRef}
+            className="flex space-x-4 overflow-x-auto pb-4 scroll-smooth scrollbar-hide"
+          >
+            {loading && (<div className="text-center w-full">Loading...</div>)}
+            {error && (<div className="text-center w-full text-red-500">{error}</div>)}
+            {!loading && !error && filteredProjects.slice().reverse().map((project) => (
+              <div
+                key={project.id}
+                className="bg-white border group border-gray-200 rounded-xl cursor-pointer shadow-sm hover:shadow-md transition duration-200 flex flex-col max-w-[320px]  overflow-hidden flex-shrink-0"
+              >
+                <div className="relative" >
+                  <Image
+                    className="object-cover max-w-full rounded-t-xl"
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={480}
+                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 40vw, 300px"
+                    priority={false}
+                    loading="lazy"
+                    placeholder={undefined}
+                    style={{ aspectRatio: "1 / 0.8" }}
+                  />
+                  <div className="absolute top-2 right-2">
+                    <span className="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">
+                      {project.tag[0]}
+                    </span>
+                  </div>
+                </div>
 
-    );
+                <div className="p-3 flex flex-col flex-grow">
+                  <div className="flex justify-between items-center mb-1">
+                    <p className="text-lg text-gray-800 font-semibold truncate mr-2 flex-grow">
+                      {project.title}
+                    </p>
+                  </div>
+
+                  <p className="text-base text-gray-600 mb-3 ">
+                    {project.description}
+                  </p>
+
+                  <div className="flex items-center  gap-4 mt-auto">
+                    <a
+                      href={project.previewUrl}
+                      className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  text-gray-600 hover:text-blue-500 transition-colors"
+                      target="_blank"
+                    >
+                      Preview
+                    </a>
+                    <a
+                      href={project.gitUrl}
+                      className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500  text-gray-600 hover:text-blue-500 transition-colors"
+                      target="_blank"
+                    >
+                      Git
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
