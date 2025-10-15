@@ -19,7 +19,7 @@ function generatePattern(width, height) {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       const c = colors[(x + y) % colors.length]
-      svg += `<rect x='${x * rectW}' y='${y * rectH}' width='${rectW}' height='${rectH}' fill='${c}' opacity='0.5'/>`
+      svg += `<rect x='${x * rectW}' y='${y * rectH}' width='${rectW}' height='${rectH}' fill='${c}' opacity='0.15'/>`
     }
   }
   svg += '</svg>'
