@@ -160,7 +160,7 @@ const seed = [
     id: 18,
     title: "Real time editor",
     description: "",
-    image: "/image/bank.PNG",
+    image: "/image/Editor.PNG",
     tag: ["React", "Tailwind"],
     gitUrl: "https://github.com/leylaghramanova/nextappeditor",
     previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_next-editor-fullstak-activity-7259537895584141312-RbSk/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAECQU6wBYXoiTmNfG0FJE65vNFBfu_eIymM"
