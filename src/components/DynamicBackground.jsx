@@ -4,10 +4,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 // Utility to create a simple SVG data URL similar to Trianglify output
 // We generate a linear-gradient style pattern by drawing colored rectangles
 function generatePattern(width, height) {
- const palette = [
-  ['#e879f9', '#60a5fa', '#5eead4'],
-  ['#60a5fa', '#5eead4', '#e879f9'],
-  ['#5eead4', '#e879f9', '#60a5fa'],
+const palette = [
+  ['#cfe8ff', '#a7d3f5', '#b5f5ec'], // light sky blue, soft aqua, mint
+  ['#a7d3f5', '#b5f5ec', '#d9e8fc'], // gentle blue blend
+  ['#b5f5ec', '#cfe8ff', '#e0f2ff'], // pale teal → soft blue → almost white
 ]
   const colors = palette[Math.floor(Math.random() * palette.length)]
   const cols = 6
@@ -19,7 +19,7 @@ function generatePattern(width, height) {
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
       const c = colors[(x + y) % colors.length]
-      svg += `<rect x='${x * rectW}' y='${y * rectH}' width='${rectW}' height='${rectH}' fill='${c}' opacity='0.15'/>`
+      svg += `<rect x='${x * rectW}' y='${y * rectH}' width='${rectW}' height='${rectH}' fill='${c}' opacity='0.25'/>`
     }
   }
   svg += '</svg>'
