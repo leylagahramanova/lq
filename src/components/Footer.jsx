@@ -34,7 +34,7 @@ export default function Icons() {
   };
 
   return (
-    <section className="bg-[#f2f4f6] p-2  font-semibold ">
+    <section className="bg-[#f2f4f6] p-5  font-semibold ">
       <div className="max-w-7xl mx-auto">
         {/* Combined Contact Section */}
         <div className="bg-white shadow-lg rounded-2xl p-6 ">
@@ -46,7 +46,7 @@ export default function Icons() {
               <h4 className="text-xl font-bold mb-6 text-gray-800">Contact Information</h4>
               <div className="space-y-4">
                 {/* Email */}
-                <div className="min-w-[330px] flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="bg-blue-100 p-3 rounded-full">
                     <AiTwotoneMail size={24} className="text-blue-600" />
                   </div>
@@ -56,13 +56,13 @@ export default function Icons() {
                       href="mailto:leylagahramanova13@gmail.com" 
                       className="text-blue-600 hover:text-blue-800 font-medium"
                     >
-                      leylagahramanova13@gmail.com
+                      leylagahramanova13
                     </a>
                   </div>
                 </div>
 
                 {/* Phone */}
-                <div className="min-w-[330px] flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="bg-green-100 p-3 rounded-full">
                     <AiOutlinePhone size={24} className="text-green-600" />
                   </div>
@@ -78,7 +78,7 @@ export default function Icons() {
                 </div>
 
                 {/* GitHub */}
-                <div className="min-w-[330px] flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="bg-gray-100 p-3 rounded-full">
                     <AiOutlineGithub size={24} className="text-gray-600" />
                   </div>
@@ -90,13 +90,13 @@ export default function Icons() {
                       rel="noopener noreferrer"
                       className="text-gray-600 hover:text-gray-800 font-medium"
                     >
-                      github.com/leylagahramanova
+                     leylagahramanova
                     </a>
                   </div>
                 </div>
 
                 {/* LinkedIn */}
-                <div className="min-w-[330px] flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
                   <div className="bg-blue-100 p-3 rounded-full">
                     <AiFillLinkedin size={24} className="text-blue-600" />
                   </div>
@@ -116,7 +116,7 @@ export default function Icons() {
             </div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2 md:pl-5">
+            <div className="lg:col-span-2 ">
               <h4 className="text-xl font-bold mb-6 text-gray-800">Send Message</h4>
               <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <input
