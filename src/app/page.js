@@ -18,17 +18,19 @@ export default function Home() {
         <Button onClick={() => setShowSkills(!showSkills)}>
           Skills
         </Button>
-        {showSkills && (
-          <div className="w-80 p-2 bg-blue-200 rounded-[10px_50px] border-2 border-blue-300 mt-2">
-            <ul className="ml-16 text-lg list-disc">
-              <li>HTML, CSS, JavaScript, TypeScript</li>
-              <li>Angular, React, Redux, Next.js</li>
-              <li>Node.js, ExpressJS, RestAPI</li>
-              <li>MySQL, MongoDB, SQL, PHPMyAdmin</li>
-              <li>Git, GitHub</li>
-            </ul>
-          </div>
-        )}
+       {showSkills && (
+  <div
+    className="w-80 p-2 bg-blue-200 rounded-[10px_50px] border-2 border-blue-300 mt-4 transition-all duration-500 ease-in-out transform"
+  >
+    <ul className="ml-16 text-lg list-disc">
+      <li>HTML, CSS, JavaScript, TypeScript</li>
+      <li>Angular, React, Redux, Next.js</li>
+      <li>Node.js, ExpressJS, RestAPI</li>
+      <li>MySQL, MongoDB, SQL, PHPMyAdmin</li>
+      <li>Git, GitHub</li>
+    </ul>
+  </div>
+)}
       </div>
     );
   };
@@ -197,7 +199,7 @@ export default function Home() {
     </h3>
 
     {/* Buttons */}
-    <div className="flex flex-col md:flex-row items-center gap-4">
+    <div className="flex flex-col md:flex-row items-start gap-4">
       <SkillsButton />
       <a
         href="Leyla Qəhrəmanova.pdf"
@@ -219,9 +221,20 @@ export default function Home() {
       </div>
 
       {/* Footer Section */}
-      <div id="footer" className="min-h-screen  py-4 px-4 sm:px-6 lg:px-8 mx-auto lg:py-8">
-        <Footer />
-      </div>
+   <div
+  id="footer"
+  className="min-h-screen flex flex-col justify-between py-4 px-4 sm:px-6 lg:px-8 mx-auto lg:py-8"
+>
+  <div className="flex-grow">
+    <Footer />
+  </div>
+
+  <div className="flex items-center justify-center py-6">
+    <p className=" text-gray-500">
+      © 2025 Designed & Developed by Leyla Gahramanova
+    </p>
+  </div>
+</div>
     </div>
   );
 }

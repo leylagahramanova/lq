@@ -155,9 +155,11 @@ export default function Icons() {
                   )}
                 </div>
               </form>
+
             </div>
           </div>
         </div>
+
       </div>
 
       {/* Tailwind animation */}
@@ -170,6 +172,7 @@ export default function Icons() {
           animation: fadeIn 0.5s ease-out forwards;
         }
       `}</style>
+      
     </section>
   );
 }
