@@ -172,7 +172,7 @@ export default function Home() {
       {/* Hero Section */}
       <div id="hero" className="flex flex-col justify-center items-center min-h-screen snap-start">
         <h1 className="text-6xl text-center mb-2">Leyla Gahramanova</h1>
-        <h2 className="text-4xl text-center ">Hi! I am a front-end developer.</h2>
+        <h2 className="text-4xl text-center ">I’m a web developer and a graphic designer.</h2>
       </div>
 
       {/* About Section */}
