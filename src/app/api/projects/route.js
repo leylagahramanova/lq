@@ -63,7 +63,7 @@ const seed = [
     description: "Interactive news platform with category filtering and real-time updates",
     image: "/image/news.PNG",
     tag: ["React"],
-    gitUrl: "https://github.com/leylaghramanova/News",
+    gitUrl: "https://github.com/leylagahramanova/News",
     previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_frontenddevelopers-intern-development-activity-7102018446904766464-RAo-?utm_source=share&utm_medium=member_desktop"
   },
   {
@@ -135,7 +135,7 @@ const seed = [
     description: "Advanced calculator application with mathematical functions.",
     image: "/image/jcalc.PNG",
     tag: ["Java"],
-    gitUrl: "https://github.com/leylaghramanova/Java/edit/master/src/com/codewithmosh/Calculator.java",
+    gitUrl: "https://github.com/leylagahramanova/Java/edit/master/src/com/codewithmosh/Calculator.java",
     previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7204768450051801090/"
   },
   {
@@ -144,7 +144,7 @@ const seed = [
     description: "Online bookstore supporting local independent retailers",
     image: "/image/BookTable.PNG",
     tag: ["Java"],
-    gitUrl: "https://github.com/leylaghramanova/BookShop",
+    gitUrl: "https://github.com/leylagahramanova/BookShop",
     previewUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7202314644311449600/"
   },
   {
@@ -153,7 +153,7 @@ const seed = [
     description: "",
     image: "/image/bank.PNG",
     tag: ["Java"],
-    gitUrl: "https://github.com/leylaghramanova/Bankapplication",
+    gitUrl: "https://github.com/leylagahramanova/Bankapplication",
     previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_java-fullstack-bank-activity-7253079652435406848-yF_p?utm_source=share&utm_medium=member_desktop&rcm=ACoAAECQU6wBYXoiTmNfG0FJE65vNFBfu_eIymM"
   },
   {
@@ -162,7 +162,7 @@ const seed = [
     description: "",
     image: "/image/Editor.PNG",
     tag: ["React", "Tailwind"],
-    gitUrl: "https://github.com/leylaghramanova/nextappeditor",
+    gitUrl: "https://github.com/leylagahramanova/nextappeditor",
     previewUrl: "https://www.linkedin.com/posts/leyla-gahramanova-124918262_next-editor-fullstak-activity-7259537895584141312-RbSk/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAECQU6wBYXoiTmNfG0FJE65vNFBfu_eIymM"
   },
   {
@@ -171,7 +171,7 @@ const seed = [
     description: "Business Blog",
     image: "/image/BusinessBlog.PNG",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/logic",
+    gitUrl: "https://github.com/leylagahramanova/logic",
     previewUrl: "https://leylagahramanova.github.io/logic/?"
   },
   {
@@ -180,7 +180,7 @@ const seed = [
     description: "Company's main page",
     image: "/image/ART.png",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/switch",
+    gitUrl: "https://github.com/leylagahramanova/switch",
     previewUrl: "https://leylagahramanova.github.io/switch/"
   },
   {
@@ -189,8 +189,8 @@ const seed = [
     description: "It's all About. Fitness First",
     image: "/image/Fitness.png",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/fitnesfit",
-    previewUrl: "https://leylaghramanova.github.io/fitnesfit/"
+    gitUrl: "https://github.com/leylagahramanova/fitnesfit",
+    previewUrl: "https://leylagahramanova.github.io/fitnesfit/"
   },
   {
     id: 22,
@@ -198,8 +198,8 @@ const seed = [
     description: "Perfect for showcasing your photographies",
     image: "/image/DARX.PNG",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/fashion",
-    previewUrl: "https://leylaghramanova.github.io/fashion/"
+    gitUrl: "https://github.com/leylagahramanova/fashion",
+    previewUrl: "https://leylagahramanova.github.io/fashion/"
   },
   {
     id: 23,
@@ -207,8 +207,8 @@ const seed = [
     description: "Let's Enjoy The Wonders of Nature",
     image: "/image/Trip.png",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/trip",
-    previewUrl: "https://leylaghramanova.github.io/trip/"
+    gitUrl: "https://github.com/leylagahramanova/trip",
+    previewUrl: "https://leylagahramanova.github.io/trip/"
   },
   {
     id: 24,
@@ -216,8 +216,8 @@ const seed = [
     description: "Get your Education today!",
     image: "/image/Course.PNG",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/myportfolio",
-    previewUrl: "https://leylaghramanova.github.io/myportfolio/"
+    gitUrl: "https://github.com/leylagahramanova/myportfolio",
+    previewUrl: "https://leylagahramanova.github.io/myportfolio/"
   },
   {
     id: 25,
@@ -225,8 +225,8 @@ const seed = [
     description: "Bank's main page copy",
     image: "/image/ABB.PNG",
     tag: ["HTML/CSS"],
-    gitUrl: "https://github.com/leylaghramanova/abb-mainpage-copy",
-    previewUrl: "https://leylaghramanova.github.io/abb-mainpage-copy/"
+    gitUrl: "https://github.com/leylagahramanova/abb-mainpage-copy",
+    previewUrl: "https://leylagahramanova.github.io/abb-mainpage-copy/"
   },
   {
     id: 26,
@@ -234,7 +234,7 @@ const seed = [
     description: "Diploma work",
     image: "/image/Etsy.PNG",
     tag: ["React", "Tailwind"],
-    gitUrl: "https://github.com/leylaghramanova/etsy9",
+    gitUrl: "https://github.com/leylagahramanova/etsy9",
     previewUrl: "https://etsy9.vercel.app/"
   }
 ];
