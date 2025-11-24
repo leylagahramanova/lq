@@ -51,8 +51,10 @@ const DynamicBackground = () => {
   }, [])
 
   // Regenerate background images when tick or size changes
-  const bg1 = useMemo(() => generatePattern(size.w, size.h), [size, tick])
-  const bg2 = useMemo(() => generatePattern(size.w, size.h), [size, tick + 1])
+  const { w, h } = size
+  const nextTick = tick + 1
+  const bg1 = useMemo(() => generatePattern(w, h), [w, h, tick])
+  const bg2 = useMemo(() => generatePattern(w, h), [w, h, nextTick])
 
   // Alternate which layer is visible based on tick parity
   const showFirst = tick % 2 === 0

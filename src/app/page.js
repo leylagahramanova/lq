@@ -1,14 +1,15 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
 import Navbar from '@/components/Navbar';
 import DynamicBackground from '@/components/DynamicBackground';
 
+const sections = ['hero', 'about', 'projects', 'footer'];
+
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0);
-  const sections = ['hero', 'about', 'projects', 'footer'];
 
   const SkillsButton = () => {
     const [showSkills, setShowSkills] = useState(false);
@@ -44,14 +45,14 @@ export default function Home() {
     </button>
   );
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = useCallback((sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const scrollToSectionIndex = (index) => {
+  const scrollToSectionIndex = useCallback((index) => {
     if (index >= 0 && index < sections.length) {
       const element = document.getElementById(sections[index]);
       if (element) {
@@ -59,7 +60,7 @@ export default function Home() {
         setCurrentSection(index);
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     let isScrolling = false;
@@ -104,7 +105,7 @@ export default function Home() {
       document.removeEventListener('keydown', handleKeyDown);
       clearTimeout(scrollTimeout);
     };
-  }, [currentSection]);
+  }, [currentSection, scrollToSectionIndex]);
   
   return (
     <div className="scroll-smooth overflow-hidden">
@@ -172,7 +173,7 @@ export default function Home() {
       {/* Hero Section */}
       <div id="hero" className="flex flex-col justify-center items-center min-h-screen snap-start">
         <h1 className="text-6xl text-center mb-2">Leyla Gahramanova</h1>
-        <h2 className="text-4xl text-center ">Hi! I'm a web developer and a graphic designer.</h2>
+        <h2 className="text-4xl text-center ">Hi! I&apos;m a web developer and a graphic designer.</h2>
       </div>
 
       {/* About Section */}
