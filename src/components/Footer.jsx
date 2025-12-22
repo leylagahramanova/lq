@@ -34,22 +34,22 @@ export default function Icons() {
   };
 
   return (
-    <section className="p-5 font-semibold">
+    <section className="p-4 sm:p-5 font-semibold">
       <div className="max-w-7xl mx-auto">
         {/* Combined Contact Section */}
         <div className="glass shadow-2xl rounded-3xl p-8 md:p-12 border border-white/50">
-          <h3 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent text-center">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-12 text-slate-50 text-center">
             Get In Touch
           </h3>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Contact Information */}
             <div>
-              <h4 className="text-2xl font-bold mb-8 text-slate-800">Contact Information</h4>
+              <h4 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-slate-50">Contact Information</h4>
               <div className="space-y-4">
                 {/* Email */}
-                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md">
-                  <div className="bg-gradient-to-br from-indigo-500 to-purple-500 p-3 rounded-xl shadow-lg">
+                <div className="flex flex-wrap items-center gap-4 p-5 bg-slate-900 rounded-xl hover:bg-slate-800 transition-colors duration-200 border border-slate-700">
+                  <div className="bg-blue-900 p-3 rounded-xl shadow-sm">
                     <AiTwotoneMail size={24} className="text-white" />
                   </div>
                   <div>
@@ -64,8 +64,8 @@ export default function Icons() {
                 </div>
 
                 {/* Phone */}
-                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 border border-green-100 hover:shadow-md">
-                  <div className="bg-gradient-to-br from-green-500 to-emerald-500 p-3 rounded-xl shadow-lg">
+                <div className="flex flex-wrap items-center gap-4 p-5 bg-slate-900 rounded-xl hover:bg-slate-800 transition-colors duration-200 border border-slate-700">
+                  <div className="bg-blue-900 p-3 rounded-xl shadow-sm">
                     <AiOutlinePhone size={24} className="text-white" />
                   </div>
                   <div>
@@ -80,8 +80,8 @@ export default function Icons() {
                 </div>
 
                 {/* GitHub */}
-                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-slate-50 to-gray-50 rounded-xl hover:from-slate-100 hover:to-gray-100 transition-all duration-300 border border-slate-200 hover:shadow-md">
-                  <div className="bg-gradient-to-br from-slate-600 to-gray-700 p-3 rounded-xl shadow-lg">
+                <div className="flex  flex-wrap items-center gap-4 p-5 bg-slate-900 rounded-xl hover:bg-slate-800 transition-colors duration-200 border border-slate-700">
+                  <div className="bg-blue-900 p-3 rounded-xl shadow-sm">
                     <AiOutlineGithub size={24} className="text-white" />
                   </div>
                   <div>
@@ -90,7 +90,7 @@ export default function Icons() {
                       href="https://github.com/leylagahramanova" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-700 hover:text-slate-900 font-semibold transition-colors"
+                      className="text-blue-600 hover:text-blue-800  font-semibold transition-colors"
                     >
                      leylagahramanova
                     </a>
@@ -98,8 +98,8 @@ export default function Icons() {
                 </div>
 
                 {/* LinkedIn */}
-                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 border border-blue-100 hover:shadow-md">
-                  <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl shadow-lg">
+                <div className="flex flex-wrap items-center gap-4 p-5 bg-slate-900 rounded-xl hover:bg-slate-800 transition-colors duration-200 border border-slate-700">
+                  <div className="bg-blue-900 p-3 rounded-xl shadow-sm">
                     <AiFillLinkedin size={24} className="text-white" />
                   </div>
                   <div>
@@ -119,7 +119,7 @@ export default function Icons() {
 
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <h4 className="text-2xl font-bold mb-8 text-slate-800">Send Message</h4>
+              <h4 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text">Send Message</h4>
               <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <input
                   type="email"
@@ -141,10 +141,10 @@ export default function Icons() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`uppercase border-2 px-10 py-4 rounded-xl font-semibold transition-all duration-300 w-full sm:w-auto tracking-wide shadow-lg transform hover:scale-105 hover:shadow-xl
+                    className={`uppercase border-2 px-10 py-4 rounded-xl font-semibold transition-all duration-200 w-full sm:w-auto tracking-wide shadow-sm
                       ${loading 
                         ? 'bg-gray-400 border-gray-400 text-white cursor-not-allowed'
-                        : 'bg-gradient-to-r from-indigo-600 via-sky-600 to-blue-500 border-transparent text-white hover:from-indigo-700 hover:via-sky-700 hover:to-blue-600'
+                        : 'bg-blue-900 border-blue-900 text-white hover:bg-blue-800'
                       }`}
                   >
                     {loading ? (

@@ -28,7 +28,7 @@ const Navbar = () => {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="fixed top-4 left-4 z-[2000] md:hidden bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-3 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+        className="fixed top-4 left-4 z-[2000] md:hidden bg-blue-900 text-white p-3 rounded-xl shadow-md hover:bg-blue-800 transition-colors duration-200"
         aria-label="Toggle menu"
       >
         {isMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
@@ -51,14 +51,14 @@ const Navbar = () => {
         <div className="p-6 pt-20">
           {/* Navigation Links */}
           <div>
-            <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-6 uppercase tracking-wide">
+            <h3 className="text-xl font-bold text-slate-900 mb-6 uppercase tracking-wide">
               Navigation
             </h3>
             <ul className="space-y-3">
               <li>
                 <button 
                   onClick={() => scrollToSection('hero')}
-                  className="w-full text-left flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md"
+                  className="w-full text-left flex items-center gap-3 p-4 bg-white rounded-xl hover:bg-slate-50 transition-colors duration-200 border border-slate-200"
                 >
                   <span className="text-slate-700 font-medium">Home</span>
                 </button>
@@ -66,7 +66,7 @@ const Navbar = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="w-full text-left flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md"
+                  className="w-full text-left flex items-center gap-3 p-4 bg-white rounded-xl hover:bg-slate-50 transition-colors duration-200 border border-slate-200"
                 >
                   <span className="text-slate-700 font-medium">About</span>
                 </button>
@@ -74,7 +74,7 @@ const Navbar = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('projects')}
-                  className="w-full text-left flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md"
+                  className="w-full text-left flex items-center gap-3 p-4 bg-white rounded-xl hover:bg-slate-50 transition-colors duration-200 border border-slate-200"
                 >
                   <span className="text-slate-700 font-medium">Projects</span>
                 </button>
@@ -82,7 +82,7 @@ const Navbar = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('footer')}
-                  className="w-full text-left flex items-center gap-3 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md"
+                  className="w-full text-left flex items-center gap-3 p-4 bg-white rounded-xl hover:bg-slate-50 transition-colors duration-200 border border-slate-200"
                 >
                   <span className="text-slate-700 font-medium">Contact</span>
                 </button>
