@@ -34,27 +34,29 @@ export default function Icons() {
   };
 
   return (
-    <section className="bg-[#f2f4f6] p-5  font-semibold ">
+    <section className="p-5 font-semibold">
       <div className="max-w-7xl mx-auto">
         {/* Combined Contact Section */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 ">
-          <h3 className="text-3xl font-bold mb-12 text-gray-800 text-center">Get In Touch</h3>
+        <div className="glass shadow-2xl rounded-3xl p-8 md:p-12 border border-white/50">
+          <h3 className="text-4xl md:text-5xl font-bold mb-12 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent text-center">
+            Get In Touch
+          </h3>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Information */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-gray-800">Contact Information</h4>
+              <h4 className="text-2xl font-bold mb-8 text-slate-800">Contact Information</h4>
               <div className="space-y-4">
                 {/* Email */}
-                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <AiTwotoneMail size={24} className="text-blue-600" />
+                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl hover:from-indigo-100 hover:to-purple-100 transition-all duration-300 border border-indigo-100 hover:shadow-md">
+                  <div className="bg-gradient-to-br from-indigo-500 to-purple-500 p-3 rounded-xl shadow-lg">
+                    <AiTwotoneMail size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Email</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-1">Email</p>
                     <a 
                       href="mailto:leylagahramanova13@gmail.com" 
-                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors"
                     >
                       leylagahramanova13
                     </a>
@@ -62,15 +64,15 @@ export default function Icons() {
                 </div>
 
                 {/* Phone */}
-                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="bg-green-100 p-3 rounded-full">
-                    <AiOutlinePhone size={24} className="text-green-600" />
+                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl hover:from-green-100 hover:to-emerald-100 transition-all duration-300 border border-green-100 hover:shadow-md">
+                  <div className="bg-gradient-to-br from-green-500 to-emerald-500 p-3 rounded-xl shadow-lg">
+                    <AiOutlinePhone size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">Phone</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-1">Phone</p>
                     <a 
                       href="tel:+994518640113" 
-                      className="text-green-600 hover:text-green-800 font-medium"
+                      className="text-green-600 hover:text-green-800 font-semibold transition-colors"
                     >
                       +994518640113
                     </a>
@@ -78,17 +80,17 @@ export default function Icons() {
                 </div>
 
                 {/* GitHub */}
-                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="bg-gray-100 p-3 rounded-full">
-                    <AiOutlineGithub size={24} className="text-gray-600" />
+                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-slate-50 to-gray-50 rounded-xl hover:from-slate-100 hover:to-gray-100 transition-all duration-300 border border-slate-200 hover:shadow-md">
+                  <div className="bg-gradient-to-br from-slate-600 to-gray-700 p-3 rounded-xl shadow-lg">
+                    <AiOutlineGithub size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">GitHub</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-1">GitHub</p>
                     <a 
                       href="https://github.com/leylagahramanova" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-800 font-medium"
+                      className="text-slate-700 hover:text-slate-900 font-semibold transition-colors"
                     >
                      leylagahramanova
                     </a>
@@ -96,17 +98,17 @@ export default function Icons() {
                 </div>
 
                 {/* LinkedIn */}
-                <div className=" flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <AiFillLinkedin size={24} className="text-blue-600" />
+                <div className="flex items-center gap-4 p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl hover:from-blue-100 hover:to-indigo-100 transition-all duration-300 border border-blue-100 hover:shadow-md">
+                  <div className="bg-gradient-to-br from-blue-600 to-indigo-600 p-3 rounded-xl shadow-lg">
+                    <AiFillLinkedin size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600">LinkedIn</p>
+                    <p className="text-xs text-slate-500 uppercase tracking-wide font-semibold mb-1">LinkedIn</p>
                     <a 
                       href="https://www.linkedin.com/in/leyla-gahramanova-124918262/" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 font-medium"
+                      className="text-blue-600 hover:text-blue-800 font-semibold transition-colors"
                     >
                       Leyla Gahramanova
                     </a>
@@ -116,15 +118,15 @@ export default function Icons() {
             </div>
 
             {/* Contact Form */}
-            <div className="lg:col-span-2 ">
-              <h4 className="text-xl font-bold mb-6 text-gray-800">Send Message</h4>
+            <div className="lg:col-span-2">
+              <h4 className="text-2xl font-bold mb-8 text-slate-800">Send Message</h4>
               <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <input
                   type="email"
                   name="user_email"
                   placeholder="Your Email"
                   required
-                  className="border border-gray-300 rounded-xl h-12 px-5 w-full outline-none focus:ring-2 focus:ring-[#103e65] focus:border-[#103e65] transition"
+                  className="border-2 border-indigo-200 rounded-xl h-14 px-5 w-full outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/80 backdrop-blur-sm text-slate-700 placeholder-slate-400 font-medium hover:border-indigo-300"
                 />
                 
                 <textarea
@@ -132,25 +134,33 @@ export default function Icons() {
                   placeholder="About Your Project"
                   rows="8"
                   required
-                  className="border border-gray-300 rounded-xl px-5 py-4 w-full outline-none focus:ring-2 focus:ring-[#103e65] focus:border-[#103e65] transition resize-none"
+                  className="border-2 border-indigo-200 rounded-xl px-5 py-4 w-full outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 resize-none bg-white/80 backdrop-blur-sm text-slate-700 placeholder-slate-400 font-medium hover:border-indigo-300"
                 ></textarea>
                 
                 <div className="flex flex-col sm:flex-row sm:items-center sm:gap-5">
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`uppercase border-2 px-10 py-3 rounded-xl font-medium transition-all duration-300 w-full sm:w-auto tracking-wide
+                    className={`uppercase border-2 px-10 py-4 rounded-xl font-semibold transition-all duration-300 w-full sm:w-auto tracking-wide shadow-lg transform hover:scale-105 hover:shadow-xl
                       ${loading 
                         ? 'bg-gray-400 border-gray-400 text-white cursor-not-allowed'
-                        : 'bg-[#103e65] border-[#103e65] text-white hover:bg-[#f85508] hover:border-[#f85508]'
+                        : 'bg-gradient-to-r from-indigo-600 via-sky-600 to-blue-500 border-transparent text-white hover:from-indigo-700 hover:via-sky-700 hover:to-blue-600'
                       }`}
                   >
-                    {loading ? 'Sending...' : 'Submit'}
+                    {loading ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
+                        Sending...
+                      </span>
+                    ) : (
+                      'Submit'
+                    )}
                   </button>
 
                   {messageSent && (
-                    <span className="text-green-600 text-sm animate-fadeIn">
-                      ✅ Message sent successfully!
+                    <span className="text-green-600 text-sm font-medium animate-fadeIn flex items-center gap-2">
+                      <span className="text-lg">✅</span>
+                      Message sent successfully!
                     </span>
                   )}
                 </div>
@@ -162,16 +172,6 @@ export default function Icons() {
 
       </div>
 
-      {/* Tailwind animation */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          0% { opacity: 0; transform: translateY(-5px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out forwards;
-        }
-      `}</style>
       
     </section>
   );

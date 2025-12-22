@@ -21,14 +21,14 @@ export default function Home() {
         </Button>
        {showSkills && (
   <div
-    className="w-80 p-2 bg-blue-200 rounded-[10px_50px] border-2 border-blue-300 mt-4 transition-all duration-500 ease-in-out transform"
+    className="w-80 p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-200/50 mt-4 transition-all duration-500 ease-in-out transform shadow-lg backdrop-blur-sm"
   >
-    <ul className="ml-16 text-lg list-disc">
-      <li>HTML, CSS, JavaScript, TypeScript</li>
-      <li>Angular, React, Redux, Next.js</li>
-      <li>Node.js, ExpressJS, RestAPI</li>
-      <li>MySQL, MongoDB, SQL, PHPMyAdmin</li>
-      <li>Git, GitHub</li>
+    <ul className="ml-8 text-base space-y-2 list-disc text-slate-700">
+      <li className="font-medium">HTML, CSS, JavaScript, TypeScript</li>
+      <li className="font-medium">Angular, React, Redux, Next.js</li>
+      <li className="font-medium">Node.js, ExpressJS, RestAPI</li>
+      <li className="font-medium">MySQL, MongoDB, SQL, PHPMyAdmin</li>
+      <li className="font-medium">Git, GitHub</li>
     </ul>
   </div>
 )}
@@ -38,7 +38,7 @@ export default function Home() {
 
   const Button = ({ children, ...props }) => (
     <button
-      className="inline-block w-30 px-8 py-4 rounded-full m-2 text-gray-100 font-extrabold text-sm uppercase text-center no-underline shadow-inner bg-blue-500 hover:opacity-80 focus:opacity-80 active:scale-90 transition duration-300 cursor-pointer"
+      className="inline-block px-8 py-4 rounded-full m-2 text-white font-semibold text-sm uppercase text-center no-underline shadow-lg bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 focus:opacity-80 active:scale-95 transition-all duration-300 cursor-pointer transform hover:shadow-xl hover:-translate-y-0.5"
       {...props}
     >
       {children}
@@ -112,16 +112,16 @@ export default function Home() {
       <DynamicBackground />
       <Navbar />
       {/* Desktop Navigation - Hidden on mobile */}
-<nav className="hidden md:flex fixed top-4 right-4 z-[200] gap-2">
+<nav className="hidden md:flex fixed top-6 right-6 z-[200] gap-3">
   <button 
     onClick={() => {
       scrollToSection('hero');
       setCurrentSection(0);
     }}
-    className={`px-4 py-2 rounded-full transition-colors ${
+    className={`px-5 py-2.5 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-md ${
       currentSection === 0
-        ? 'bg-blue-800 text-white'
-        : 'bg-blue-600 text-white hover:bg-blue-700'
+        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+        : 'glass text-slate-700 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 hover:text-white hover:shadow-md'
     }`}
   >
     Home
@@ -132,10 +132,10 @@ export default function Home() {
       scrollToSection('about');
       setCurrentSection(1);
     }}
-    className={`px-4 py-2 rounded-full transition-colors ${
+    className={`px-5 py-2.5 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-md ${
       currentSection === 1
-        ? 'bg-blue-800 text-white'
-        : 'bg-blue-600 text-white hover:bg-blue-700'
+        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+        : 'glass text-slate-700 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 hover:text-white hover:shadow-md'
     }`}
   >
     About
@@ -146,10 +146,10 @@ export default function Home() {
       scrollToSection('projects');
       setCurrentSection(2);
     }}
-    className={`px-4 py-2 rounded-full transition-colors ${
+    className={`px-5 py-2.5 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-md ${
       currentSection === 2
-        ? 'bg-blue-800 text-white'
-        : 'bg-blue-600 text-white hover:bg-blue-700'
+        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+        : 'glass text-slate-700 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 hover:text-white hover:shadow-md'
     }`}
   >
     Projects
@@ -159,10 +159,10 @@ export default function Home() {
       scrollToSection('footer');
       setCurrentSection(3);
     }}
-    className={`px-4 py-2 rounded-full transition-colors ${
+    className={`px-5 py-2.5 rounded-full transition-all duration-300 font-medium text-sm backdrop-blur-md ${
       currentSection === 3
-        ? 'bg-blue-800 text-white'
-        : 'bg-blue-600 text-white hover:bg-blue-700'
+        ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg scale-105'
+        : 'glass text-slate-700 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-purple-500 hover:text-white hover:shadow-md'
     }`}
   >
   Contact
@@ -171,41 +171,51 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <div id="hero" className="flex flex-col justify-center items-center min-h-screen snap-start">
-        <h1 className="text-6xl text-center mb-2">Leyla Gahramanova</h1>
-        <h2 className="text-4xl text-center ">Hi! I&apos;m a web developer and a graphic designer.</h2>
+      <div id="hero" className="flex flex-col justify-center items-center min-h-screen snap-start px-4">
+        <div className="animate-fade-in-up text-center max-w-4xl">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Leyla Gahramanova
+          </h1>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-700 font-medium leading-relaxed">
+            Hi! I&apos;m a <span className="font-semibold text-indigo-600">web developer</span> and a <span className="font-semibold text-purple-600">graphic designer</span>.
+          </h2>
+        </div>
       </div>
 
       {/* About Section */}
  <div id="about" className="flex justify-center items-center w-full min-h-screen snap-start md:items-start text-center md:text-left py-4 px-4 sm:px-6 lg:px-8">
-<section className="flex flex-col md:flex-row items-center justify-center w-full min-h-screen md:gap-20 gap-5 ">
+<section className="flex flex-col md:flex-row items-center justify-center w-full min-h-screen md:gap-20 gap-8 max-w-7xl mx-auto">
   {/* Image */}
-  <div className="order-1 md:order-2 w-full md:w-1/2 flex md:justify-end items-center justify-center">
-    <Image
-      src="/image/comp.png"
-      width={300}
-      height={300}
-      alt="comp"
-      className="max-w-[230px] max-h-[230px] md:max-w-[300px] md:max-h-[300px]"
-      style={{ filter: 'drop-shadow(0 -2px 8px rgba(0, 0, 0, 0.5))' }}
-    />
+  <div className="order-1 md:order-2 w-full md:w-1/2 flex md:justify-end items-center justify-center animate-slide-in-right">
+    <div className="relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+      <Image
+        src="/image/comp.png"
+        width={300}
+        height={300}
+        alt="comp"
+        className="relative max-w-[230px] max-h-[230px] md:max-w-[300px] md:max-h-[300px] drop-shadow-2xl"
+      />
+    </div>
   </div>
 
   {/* Content */}
-  <div className="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center items-center ">
-    <h2 className="text-3xl mb-4 text-center">About Me</h2>
-    <h3 className="text-2xl mb-6">
-        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;I possess a diverse skill set and specialize in creating dynamic and responsive web applications.  
+  <div className="order-2 md:order-1 w-full md:w-1/2 flex flex-col justify-center items-center md:items-start animate-fade-in-up">
+    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+      About Me
+    </h2>
+    <p className="text-lg md:text-xl mb-8 text-slate-700 leading-relaxed max-w-2xl">
+      I possess a diverse skill set and specialize in creating dynamic and responsive web applications.  
       I am always eager to learn new technologies and collaborate with others to craft exceptional applications.
-    </h3>
+    </p>
 
     {/* Buttons */}
-    <div className="flex flex-col md:flex-row items-start gap-4">
+    <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
       <SkillsButton />
       <a
-        href="Leyla Qəhrəmanova.pdf"
+        href="/Leyla Qəhrəmanova.pdf"
         download="Leyla Qəhrəmanova.pdf"
-        className="inline-block w-30 px-8 py-4 rounded-full m-2 text-gray-100 font-extrabold text-sm uppercase text-center no-underline shadow-inner bg-blue-500 hover:opacity-80 focus:opacity-80 active:scale-90 transition duration-300"
+        className="inline-block px-8 py-4 rounded-full text-white font-semibold text-sm uppercase text-center no-underline shadow-lg bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 hover:from-indigo-700 hover:via-purple-700 hover:to-sky-600 focus:opacity-80 active:scale-95 transition-all duration-300 transform hover:shadow-xl hover:-translate-y-0.5"
       >
         Download CV
       </a> 
@@ -231,8 +241,8 @@ export default function Home() {
   </div>
 
   <div className="flex items-center justify-center py-6">
-    <p className=" text-gray-500">
-      © 2025 Designed & Developed by Leyla Gahramanova
+    <p className="text-slate-500 text-sm font-medium">
+      © 2025 Designed & Developed by <span className="font-semibold text-indigo-600">Leyla Gahramanova</span>
     </p>
   </div>
 </div>
