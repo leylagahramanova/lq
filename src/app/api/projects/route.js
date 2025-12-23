@@ -274,4 +274,63 @@ export async function GET() {
   }
 }
 
+// POST endpoint to add a new project
+export async function POST(request) {
+  const hasMongoUri = !!process.env.MONGODB_URI;
+  if (!hasMongoUri) {
+    return NextResponse.json(
+      { error: 'MongoDB URI not configured' },
+      { status: 500 }
+    );
+  }
+
+  try {
+    await connectToDatabase();
+
+    const body = await request.json();
+    const { id, title, description, image, tag, gitUrl, previewUrl } = body;
+
+    // Validate required fields
+    if (!id || !title || !image) {
+      return NextResponse.json(
+        { error: 'Missing required fields: id, title, and image are required' },
+        { status: 400 }
+      );
+    }
+
+    // Check if project with this id already exists
+    const existingProject = await Project.findOne({ id });
+    if (existingProject) {
+      return NextResponse.json(
+        { error: `Project with id ${id} already exists` },
+        { status: 400 }
+      );
+    }
+
+    // Create new project
+    const newProject = new Project({
+      id,
+      title,
+      description: description || '',
+      image,
+      tag: tag || [],
+      gitUrl: gitUrl || '',
+      previewUrl: previewUrl || '',
+    });
+
+    await newProject.save();
+
+    return NextResponse.json(
+      { message: 'Project added successfully', project: newProject },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error('Error adding project:', error);
+    return NextResponse.json(
+      { error: 'Failed to add project', details: error.message },
+      { status: 500 }
+    );
+  }
+}
+
 

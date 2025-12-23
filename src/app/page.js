@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Projects from "@/components/Projects";
@@ -52,6 +52,40 @@ export default function Home() {
     }
   }, []);
 
+  // Update currentSection based on scroll position
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let mostVisible = null;
+
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
+            mostVisible = entry;
+          }
+        });
+
+        if (mostVisible?.target?.id) {
+          const idx = sections.indexOf(mostVisible.target.id);
+          if (idx !== -1) {
+            setCurrentSection(idx);
+          }
+        }
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Smooth full-page snapping between sections (like at the beginning)
   const scrollToSectionIndex = useCallback((index) => {
     if (index >= 0 && index < sections.length) {
       const element = document.getElementById(sections[index]);
@@ -67,24 +101,22 @@ export default function Home() {
     let scrollTimeout;
 
     const handleWheel = (e) => {
+      // Prevent the default long free scroll so we can snap section by section
       e.preventDefault();
 
       if (isScrolling) return;
-
       isScrolling = true;
 
       if (e.deltaY > 0 && currentSection < sections.length - 1) {
-        // Scroll down
         scrollToSectionIndex(currentSection + 1);
       } else if (e.deltaY < 0 && currentSection > 0) {
-        // Scroll up
         scrollToSectionIndex(currentSection - 1);
       }
 
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(() => {
         isScrolling = false;
-      }, 1000);
+      }, 600);
     };
 
     const handleKeyDown = (e) => {
@@ -108,7 +140,7 @@ export default function Home() {
   }, [currentSection, scrollToSectionIndex]);
 
   return (
-    <div className="scroll-smooth overflow-hidden">
+    <div className="scroll-smooth">
 
       <Navbar />
       {/* Desktop Navigation - Hidden on mobile */}
@@ -167,8 +199,13 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <div id="hero" className="flex flex-col justify-center items-center min-h-[80vh] snap-start px-4 pt-20 pb-16 sm:pt-24">
-        <div className="animate-fade-in-up text-center max-w-4xl">
+      <div
+        id="hero"
+        className={`flex flex-col justify-center items-center min-h-[80vh] snap-start px-4 pt-20 pb-16 sm:pt-24 transition-all duration-500 ${
+          currentSection === 0 ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'
+        }`}
+      >
+        <div className="text-center max-w-4xl">
           <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 text-slate-50">
             Leyla Gahramanova
           </h1>
@@ -180,7 +217,12 @@ export default function Home() {
 
 
       {/* About Section */}
-      <div id="about" className="flex justify-center items-center w-full min-h-screen snap-start md:items-start text-center md:text-left py-10 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div
+        id="about"
+        className={`flex justify-center items-center w-full min-h-screen snap-start md:items-start text-center md:text-left py-10 sm:py-12 px-4 sm:px-6 lg:px-8 transition-all duration-500 ${
+          currentSection === 1 ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'
+        }`}
+      >
         <section className="flex flex-col md:flex-row items-center justify-center w-full min-h-[70vh] md:min-h-screen md:gap-16 gap-10 max-w-7xl mx-auto">
           {/* Image */}
           <div className="order-1 md:order-2 w-full md:w-1/2 flex md:justify-end items-center justify-center animate-slide-in-right">
@@ -224,23 +266,24 @@ export default function Home() {
 
 
       {/* Projects Section */}
-      <div id="projects" className="min-h-screen snap-start py-4  sm:px-6 lg:px-8 mx-auto lg:py-8">
+      <div
+        id="projects"
+        className={`min-h-screen snap-start py-4 sm:px-6 lg:px-8 mx-auto lg:py-8 transition-all duration-500 ${
+          currentSection === 2 ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'
+        }`}
+      >
         <Projects />
       </div>
 
       {/* Footer Section */}
       <div
         id="footer"
-        className="min-h-screen flex flex-col justify-between py-4 sm:px-6 lg:px-8 mx-auto lg:py-8"
+        className={`min-h-screen snap-start flex flex-col justify-between py-4 sm:px-6 lg:px-8 mx-auto lg:py-8 transition-all duration-500 ${
+          currentSection === 3 ? 'animate-fade-in-up' : 'opacity-0 translate-y-6'
+        }`}
       >
         <div className="flex-grow">
           <Footer />
-        </div>
-
-        <div className="flex items-center justify-center ">
-          <p className="text-slate-500 text-sm font-medium">
-            © 2025 Designed & Developed by <span className="font-semibold text-indigo-600">Leyla Gahramanova</span>
-          </p>
         </div>
       </div>
     </div>

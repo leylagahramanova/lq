@@ -75,18 +75,18 @@ export default function Projects() {
               Projects
             </h2>
             <div className="flex justify-center md:justify-end">
-              <select
-                value={tag}
-                onChange={(e) => handleTagChange(e.target.value)}
+            <select
+              value={tag}
+              onChange={(e) => handleTagChange(e.target.value)}
                 className="px-4 sm:px-6 py-2.5 sm:py-3 border-2 border-indigo-200 rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-700 text-sm sm:text-base font-medium bg-white backdrop-blur-sm transition-all duration-300 hover:border-indigo-300"
-              >
+            >
                 <option value="All">All Projects</option>
-                {uniqueTags.map((tagName) => (
-                  <option key={tagName} value={tagName}>
-                    {tagName}
-                  </option>
-                ))}
-              </select>
+              {uniqueTags.map((tagName) => (
+                <option key={tagName} value={tagName}>
+                  {tagName}
+                </option>
+              ))}
+            </select>
             </div>
           </div>
           {/* Projects Horizontal Scroll */}
