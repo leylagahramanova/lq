@@ -30,3 +30,4 @@ console.log('   1. Get the correct connection string from Atlas dashboard');
 console.log('   2. Update your .env.local file with the correct string');
 console.log('   3. Make sure the cluster hostname matches what you see in Atlas\n');
 
+
