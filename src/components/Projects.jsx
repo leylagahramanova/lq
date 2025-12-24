@@ -22,7 +22,9 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await fetch('/api/projects');
+        const res = await fetch('/api/projects?' + new Date().getTime(), {
+          cache: 'no-store'
+        });
         const data = await res.json();
         setProjects(Array.isArray(data) ? data : []);
       } catch (e) {

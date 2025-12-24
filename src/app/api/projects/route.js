@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { connectToDatabase } from '@/lib/mongodb';
-import Project from '@/models/Project';
+import { MongoClient } from 'mongodb';
 
 const seed = [
   {
@@ -236,8 +235,45 @@ const seed = [
     tag: ["React", "Tailwind"],
     gitUrl: "https://github.com/leylagahramanova/etsy9",
     previewUrl: "https://etsy9.vercel.app/"
+  },  {
+    id: 27, // ⚠️ Make sure this ID is unique
+    title: "Hessam",
+    description: "Cardboard production site copy",
+    image: "/image/hessam.PNG", // 📸 Path relative to public folder (must exist!)
+    tag: ["HTML/CSS","Js"],
+    gitUrl: "https://github.com/leylagahramanova/hesam",
+    previewUrl: "https://karton.inter.whm.az/"
+  },
+  {
+    id: 28, // ⚠️ Make sure this ID is unique and different from the first one
+    title: "Simcards.store",
+    description: "Simcards store site",
+    image: "/image/sms.PNG", 
+    tag: ["HTML/CSS","Js"],
+    gitUrl: "https://github.com/leylagahramanova/sms-site",
+    previewUrl: "https://sms.inter.whm.az/"
   }
 ];
+
+// Seed function to clear and re-populate database
+async function seedDB(client) {
+  try {
+    const database = client.db('portfolio');
+    const collection = database.collection('projects');
+
+    // Remove old projects
+    await collection.deleteMany({});
+    
+    // Insert new projects
+    await collection.insertMany(seed);
+
+    console.log('✅ Seeded projects into MongoDB Atlas');
+    return { success: true, count: seed.length };
+  } catch (err) {
+    console.error('Seed error:', err);
+    throw err;
+  }
+}
 
 export async function GET() {
   const hasMongoUri = !!process.env.MONGODB_URI;
@@ -248,29 +284,37 @@ export async function GET() {
     return res;
   }
 
+  const client = new MongoClient(process.env.MONGODB_URI);
+
   try {
-    // Add a 2s timeout around the DB init+query to avoid long hangs in UI
-    const withTimeout = (p, ms) => new Promise((resolve, reject) => {
-      const t = setTimeout(() => reject(new Error('timeout')), ms);
-      p.then((v) => { clearTimeout(t); resolve(v); }).catch((e) => { clearTimeout(t); reject(e); });
-    });
+    await client.connect();
 
-    await withTimeout(connectToDatabase(), 2000);
+    // Use the same database and collection names
+    const database = client.db('portfolio');
+    const collection = database.collection('projects');
 
-    const count = await Project.countDocuments();
+    // Check if database is empty and seed if needed
+    const count = await collection.countDocuments();
     if (count === 0 && Array.isArray(seed) && seed.length > 0) {
-      await Project.insertMany(seed);
+      await seedDB(client);
     }
 
-    const projects = await withTimeout(Project.find().sort({ id: 1 }).lean(), 2000);
+    // Get all projects sorted by id
+    const projects = await collection.find({}).sort({ id: 1 }).toArray();
+
     const res = NextResponse.json(projects, { status: 200 });
-    res.headers.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
+    res.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.headers.set('Pragma', 'no-cache');
+    res.headers.set('Expires', '0');
     return res;
   } catch (error) {
-    // On any DB error or timeout, fall back to seed so UI keeps working
+    console.error('MongoDB error:', error);
+    // On any DB error, fall back to seed so UI keeps working
     const res = NextResponse.json(seed, { status: 200 });
     res.headers.set('Cache-Control', 'public, max-age=300, s-maxage=300, stale-while-revalidate=600');
     return res;
+  } finally {
+    await client.close();
   }
 }
 
@@ -284,8 +328,13 @@ export async function POST(request) {
     );
   }
 
+  const client = new MongoClient(process.env.MONGODB_URI);
+
   try {
-    await connectToDatabase();
+    await client.connect();
+
+    const database = client.db('portfolio');
+    const collection = database.collection('projects');
 
     const body = await request.json();
     const { id, title, description, image, tag, gitUrl, previewUrl } = body;
@@ -298,8 +347,16 @@ export async function POST(request) {
       );
     }
 
+    // Validate image path format
+    if (!image.startsWith('/image/')) {
+      return NextResponse.json(
+        { error: 'Image path must start with /image/ (e.g., /image/myproject.png)' },
+        { status: 400 }
+      );
+    }
+
     // Check if project with this id already exists
-    const existingProject = await Project.findOne({ id });
+    const existingProject = await collection.findOne({ id });
     if (existingProject) {
       return NextResponse.json(
         { error: `Project with id ${id} already exists` },
@@ -307,8 +364,8 @@ export async function POST(request) {
       );
     }
 
-    // Create new project
-    const newProject = new Project({
+    // Create new project document
+    const newProject = {
       id,
       title,
       description: description || '',
@@ -316,21 +373,58 @@ export async function POST(request) {
       tag: tag || [],
       gitUrl: gitUrl || '',
       previewUrl: previewUrl || '',
-    });
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
 
-    await newProject.save();
+    await collection.insertOne(newProject);
 
     return NextResponse.json(
       { message: 'Project added successfully', project: newProject },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error adding project:', error);
+    console.error('MongoDB error:', error);
     return NextResponse.json(
       { error: 'Failed to add project', details: error.message },
       { status: 500 }
     );
+  } finally {
+    await client.close();
   }
 }
 
+// PUT endpoint to re-seed the database (clears and re-populates)
+export async function PUT() {
+  const hasMongoUri = !!process.env.MONGODB_URI;
+  if (!hasMongoUri) {
+    return NextResponse.json(
+      { error: 'MongoDB URI not configured' },
+      { status: 500 }
+    );
+  }
+
+  const client = new MongoClient(process.env.MONGODB_URI);
+
+  try {
+    await client.connect();
+    const result = await seedDB(client);
+    
+    return NextResponse.json(
+      { 
+        message: 'Database seeded successfully', 
+        projectsAdded: result.count 
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error('Seed error:', error);
+    return NextResponse.json(
+      { error: 'Failed to seed database', details: error.message },
+      { status: 500 }
+    );
+  } finally {
+    await client.close();
+  }
+}
 
